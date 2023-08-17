@@ -1,26 +1,21 @@
 # Workflow Name
 name: Ci/CD Pipeline
-on:
-# Manually trigger workflow runs
-  workflow_dispatch:
-    push:
-      branches:
-        - main
-      jobs:
-        tests:       # Test's Job
-          name: Unit Tests
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v1
-            - name: Set up JDK
-              uses: actions/setup-java@v1
-              with:
-                java-version: '11'
-            - name: Validate Gradle wrapper
-              uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
-            - name: Build with Gradle
-              uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
-              with:
-                arguments: build
+on: [push]
+jobs:
+  tests:       # Test's Job
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
+        with:
+          arguments: build
 
 
