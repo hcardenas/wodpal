@@ -44,6 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info
+
   build:
     needs: sonar
     name: Build
@@ -54,8 +55,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-      - name: Build with Gradle
-        run: ./gradlew build
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
       - name: Upload JAR
         uses: actions/upload-artifact@v2
         with:
