@@ -55,10 +55,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
-        with:
-          arguments: build
+#      - name: Build with Gradle
+#        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
+#        with:
+#          arguments: build
 #      - name: Upload JAR
 #        uses: actions/upload-artifact@v2
 #        with:
