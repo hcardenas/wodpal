@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.15-SNAPSHOT'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id "org.sonarqube" version "4.2.1.3168"
 }
 
 group = 'com.hcardenas'
@@ -35,6 +36,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "hcardenas_wodpal"
+        property "sonar.organization", "hcardenas"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
 
 tasks.named('test') {
